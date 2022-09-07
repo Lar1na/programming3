@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Moo+Lah+Lah&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Moo+Lah+Lah&family=Odibee+Sans&display=swap" rel="stylesheet">
+    <title>Game of life</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        header{
+            display: flex;
+            justify-content: space-between;
+            background-color: #2d2d2e;
+            height: 70px;
+        }
+        h1{
+            color: beige;
+            font-family: 'Odibee Sans', cursive;
+            padding: 15px;
+            font-size: 40px;
+        }
+        .header_nav ul{
+            padding-right: 20px;
+            padding-top: 10px;
+            display: flex;
+        }
+        .header_nav ul li{
+            padding-right: 15px;
+            list-style-type: none;
+        }
+        .header_nav ul li a{
+            text-decoration: none;
+            font-size: 30px;
+            color: white;
+            font-family: 'Indie Flower', cursive;
+            
+
+        }
+        .header_nav ul li a:hover{
+            transition: all 25ms;
+            color: red
+        }
+        main{
+            background-color: grey;
+            padding-top: 75px;
+            display: flex;
+            justify-content: space-evenly;
+            height: 500px;
+            align-items: center;
+            padding-bottom: 15%;
+        }
+        .image img{
+            width: 450px;
+            height: 450px;
+            padding-top: 100px;
+        }
+        .description p{
+            width: 360px;
+            color: aliceblue;
+        }
+        .image, .description{
+            padding-top: 100px;
+        }
+
+        .animation{
+            display: flex;
+            justify-content: space-evenly;
+            background-color: grey;
+        }
+        .example1 , .example7{
+        width: 50px;
+        height: 50px;
+        background: red;
+        position: relative;
+        animation: mymove 5s;
+        animation-iteration-count: infinite;
+        }
+        .example2, .example8{
+        width: 50px;
+        height: 50px;
+        background: blue;
+        position: relative;
+        animation: mymove 6s;
+        animation-iteration-count: infinite;
+        }
+        .example3, .example9{
+        width: 50px;
+        height: 50px;
+        background: black;
+        position: relative;
+        animation: mymove 7s;
+        animation-iteration-count: infinite;
+        }
+        .example4, .example10{
+        width: 50px;
+        height: 50px;
+        background: yellow;
+        position: relative;
+        animation: mymove 5s;
+        animation-iteration-count: infinite;
+        }
+        .example5, .example11{
+        width: 50px;
+        height: 50px;
+        background: green;
+        position: relative;
+        animation: mymove 6s;
+        animation-iteration-count: infinite;
+        }
+        .example6, .example12{
+        width: 50px;
+        height: 50px;
+        background: purple;
+        position: relative;
+        animation: mymove 7s;
+        animation-iteration-count: infinite;
+        }
+        
+        
+
+        
+        @keyframes mymove {
+        0% {top: 0px;}
+        20% {top: 180px;}
+        40% {top: 0px;}
+        80% {top: 180px;}
+        100% {top: 0px;}
+        }
+        footer{
+            height: 96px;
+            background-color: #2d2d2e;
+        }
+        footer p {
+            color: aliceblue;
+            padding-top: 30px;
+            padding-left: 30px;
+            font-size: 17px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Game of life</h1>
+        </div>
+        <div class="header_nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="info.html">Info</a></li>
+                <li><a href="play.html">Play</a></li>
+            </ul>
+            
+        </div>
+    </header>
+    <div class="animation">
+        <div class="example1"></div>
+        <div class="example2"></div>
+        <div class="example3"></div>
+        <div class="example4"></div>
+        <div class="example5"></div>
+        <div class="example6"></div>
+        <div class="example7"></div>
+        <div class="example8"></div>
+        <div class="example9"></div>
+        <div class="example10"></div>
+        <div class="example11"></div>
+        <div class="example12"></div>
+    </div>
+    <main>
+        
+         <div class="image">
+            <img src="Img/example.png" alt="">
+        </div>
+        <div class="description">
+            <p>Այս խաղը պատրաստվել է Գյումրու Թումո կենտրոնի ծրագրավորման դասընթացի 2-րդ մակարդակի ժամանակ։ Դասընթացը տեղի է ունեցել 2022 թվականի մայիս ամսին։ Խաղը պատրաստել է Լարինա Շառոյանը, իսկ դասընթացավարը Կառլեն Հովհաննիսյանն է։ Դասընթացի ընթացքում ծանոթացել ենք Javascript-ի p5 գրադարանին, ինչպես նաև  մատրիցներին, ՕԿԾ-ին։ Եթե ցանկանում եք ծանոթանալ կանոններին, սեղմեք Info բաժինը, իսկ եթե ցանկանում եք խաղալ, սեղմեք Play բաժինը։</p>
+        </div>
+    </main> 
+    <footer>
+        <p>29․05․2022</p>
+    </footer>
+
+</body>
+</html>

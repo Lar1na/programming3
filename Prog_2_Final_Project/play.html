@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Moo+Lah+Lah&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Moo+Lah+Lah&family=Odibee+Sans&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        header{
+            display: flex;
+            justify-content: space-between;
+            background-color: #2d2d2e;
+            height: 70px;
+        }
+        h1{
+            color: beige;
+            font-family: 'Odibee Sans', cursive;
+            padding: 15px;
+            font-size: 40px;
+        }
+        .header_nav ul{
+            padding-right: 20px;
+            padding-top: 10px;
+            display: flex;
+        }
+        .header_nav ul li{
+            padding-right: 15px;
+            list-style-type: none;
+        }
+        .header_nav ul li a{
+            text-decoration: none;
+            font-size: 30px;
+            color: white;
+            font-family: 'Indie Flower', cursive;
+            
+
+        }
+        .header_nav ul li a:hover{
+            transition: all 25ms;
+            color: red
+        }
+        canvas{
+            padding-top: 15px;
+            padding-left: 35%
+        }
+        .button {
+        margin: auto;
+        margin-top: 5vh;
+        font-size: 20px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .bomb{
+        background-color:black;
+        color: aliceblue;
+    }
+    .amenaker{
+        background-color: purple;
+        color: aliceblue;
+    }
+    p {
+        background-color: rgb(215, 255, 255);
+        width: 200px;
+        padding: 10px;
+        border-radius: 30px;
+        text-align: center;
+        border: 1px solid black;
+        user-select: none;      
+    }
+    .buttons{
+        display: flex;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Game of life</h1>
+        </div>
+        <div class="header_nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="info.html">Info</a></li>
+                <li><a href="play.html">Play</a></li>
+            </ul>
+            
+        </div>
+    </header>
+    <hr>
+    <main>
+        <div class="buttons">
+            <div class="button" onclick="AddBomb()"><p class="bomb">Ռումբ</p></div>
+            <div class="button" onclick="AddAmenaker()"><p class="amenaker">Ամենակեր</p></div>
+        </div>
+        <div class="links">
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+        <script src="class.js"></script>
+        <script src="script.js"></script>
+    </div>
+    </main>
+    
+</body>
+</html>
