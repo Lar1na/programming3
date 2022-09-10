@@ -1,7 +1,6 @@
 class Bomb extends LivingCreature{
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
+        super(x,y)
         this.energy = 1
         this.directions = this.directions = [
             [this.x - 1, this.y - 1],
