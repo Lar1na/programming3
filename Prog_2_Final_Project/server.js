@@ -1,11 +1,12 @@
 var express = require('express');
 var app = express();
 var server = require('http').Server(app);
-var io = require('socker.io')(server);
+var io = require('socket.io')(server);
 
 app.use(express.static("."));
 
 app.get('/', function (req, res){
+   
     res.redirect('index.html');
 });
 server.listen(3000);
@@ -63,9 +64,11 @@ function matrixGenerator(matrixSize,grassCount,grEatCount,predatorCount, energy_
 
  return matrix ;     
 }
-let matrix = matrixGenerator(matrix_size,50,15,25, 5);
+// var matrix_size = +prompt("Ներմուծեք աղյուսակի վանդակների թիվը(լռելայն ՝ 30)")
 
-io.sockets('send matrix', matrix)
+ matrix = matrixGenerator(20,50,15,25, 5);
+
+io.sockets.emit('send matrix', matrix)
 
 grassArr = [];
 grassEaterArr = [];
@@ -77,13 +80,17 @@ amenaker_arr = []
 Grass = require("./grass");
 GrassEater = require("./grassEater");
 Predator = require("./predator");
-EnergyGiver = require("./energyGiver");
-Bomb = require("")
+EnergyGiver = require("./energy_giver");
+Bomb = require("./bomb")
+
 
 function CreateObject(){
+    console.log(matrix);
     for(var y = 0 ; y < matrix.length ;y++){
         for(var x = 0; x < matrix[y].length;x++){
                        if(matrix[y][x] == 1){
+   
+
                             var gr = new Grass(x,y)
   
                             grassArr.push(gr)
@@ -102,6 +109,8 @@ function CreateObject(){
    }
    io.sockets('send matrix', matrix) 
 }
+
+
 function game(){
     for(var i in grassArr){
         grassArr[i].mul()
@@ -124,16 +133,18 @@ function game(){
      amenaker_arr[j].eat()
      
  }
- io.sockets('send matrix', matrix) 
+ io.sockets.emit('send matrix', matrix) 
 }
-setInterval(game(), 200)
+
+
+setInterval(game, 200)
 
 
 
 
-io.sockets('send matrix', matrix) 
+io.sockets.emit('send matrix', matrix) 
 
 
 io.on('connection', function(){
-    CreateObject(matrix)
+    CreateObject()
 })
