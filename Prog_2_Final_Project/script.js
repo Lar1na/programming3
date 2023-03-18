@@ -14,8 +14,8 @@ if(matrix_size == ""){
 
 function AddBomb() {
     for (let i = 0; i < 1; i++) {
-        let x = Math.floor(random(matrix_size));
-        let y = Math.floor(random(matrix_size));
+        let x = Math.floor(Math.random * 20);
+        let y = Math.floor(Math.random * 20);
         matrix[y][x] = 5;
     }
     for (let y = 0; y < matrix.length; y++) {
@@ -30,8 +30,8 @@ function AddBomb() {
 }
 function AddAmenaker() {
     for (let i = 0; i < 1; i++) {
-        let x = Math.floor(random(matrix_size));
-        let y = Math.floor(random(matrix_size));
+        let x = Math.floor(Math.random * 20);
+        let y = Math.floor(Math.random * 20);
         matrix[y][x] = 6;
     }
     for (let y = 0; y < matrix.length; y++) {
