@@ -1,6 +1,7 @@
-var socket = io()
+const socket = io();
 var side = prompt("Ներմուծեք յուրաքանչյուր վանդակի երկարությունը(լռելայն ՝ 20)");
 var color_of_canvas = prompt("Ներմուծեք դատարկ վանդակների գույնը(լռելայն ՝ սպիտակ)")
+var matrix_size = +prompt("Ներմուծեք աղյուսակի վանդակների թիվը(լռելայն ՝ 30)")
 
 if(side == ""){
     side = 20
@@ -45,10 +46,8 @@ function AddAmenaker() {
     }
 }
 function setup(){
-frameRate(10)
-createCanvas(matrix[0].length * side, matrix.length * side);
-
- 
+    frameRate(10)
+    createCanvas(30 * side, 30 * side);
 
 }
 function nkarel(matrix){
@@ -83,14 +82,13 @@ function nkarel(matrix){
                     fill(color_of_canvas)
                     rect(x  * side ,y * side , side , side)
                }
-               
-
-      }
- }
+        }
+    }
 
 }
-setInterval(
-    function(){
-        socket.on('send matrix', nkarel)
-    },1000
-)
+socket.on('send matrix', nkarel)
+// setInterval(
+//     function(){
+//         socket.on('send matrix', nkarel)
+//     },1000
+// )
