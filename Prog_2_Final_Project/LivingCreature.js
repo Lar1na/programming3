@@ -1,4 +1,4 @@
-let LivingCreature = require("./LivingCreature")
+
 module.exports = class LivingCreature {
     constructor(x, y) {
         this.x = x;

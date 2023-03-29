@@ -82,7 +82,7 @@ Bomb = require("./bomb")
 Amenaker = require("./amenaker")
 
 function CreateObject() {
-    console.log(matrix);
+    // console.log(matrix);
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             if (matrix[y][x] == 1) {
@@ -95,14 +95,14 @@ function CreateObject() {
                 var pre = new Predator(x, y)
                 predatorArr.push(pre)
             } else if (matrix[y][x] == 4) {
-                var en = new Energy_giver(x, y)
+                var en = new EnergyGiver(x, y)
                 predatorArr.push(en)
             }
         }
     }
     io.emit('send matrix', matrix)
 }
-
+CreateObject()
 
 function game() {
     for (var i in grassArr) {
@@ -110,17 +110,15 @@ function game() {
     }
 
     for (let j in grassEaterArr) {
-        grassEaterArr[j].mul()
         grassEaterArr[j].eat()
     }
-
+    // console.log(predatorArr);
+    
     for (let j in predatorArr) {
-        predatorArr[j].mul()
         predatorArr[j].eat()
     }
     for (let j in bomb_arr) {
         bomb_arr[j].mul()
-
     }
     for (let j in amenaker_arr) {
         amenaker_arr[j].eat()

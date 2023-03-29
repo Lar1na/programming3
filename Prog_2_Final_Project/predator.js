@@ -2,8 +2,7 @@ let LivingCreature = require("./LivingCreature")
 module.exports = class Predator extends LivingCreature {
     constructor(x, y) {
         super(x,y)
-        this.energy = 5;
-        this.multiply = 0
+        this.energy = 3;
         this.directions = [];
     }
 
@@ -37,28 +36,28 @@ module.exports = class Predator extends LivingCreature {
     }
 
     mul() {
-        this.multiply++;
         var emptyCells = this.chooseCell(0);
         var newCell  =  emptyCells[Math.floor(Math.random * emptyCells.length)];
 
 
-        if (newCell && this.multiply >= 16) {
+        if (newCell ) {
             var newX = newCell[0];
             var newY = newCell[1];
             matrix[newY][newX] = 3;
 
             var pre = new Predator(newX, newY);
             predatorArr.push(pre);
-            this.multiply = 0;
+            this.energy = 0;
         }
     }
 
-    move() {
-        this.energy--
+    move(){
+     
         var emptyCells = this.chooseCell(0)
-        var newCell = random(emptyCells);
+        var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
         if (newCell && this.energy >= 0) {
+            this.energy--
             var newX = newCell[0]
             var newY = newCell[1]
             matrix[newY][newX] = matrix[this.y][this.x]
@@ -74,15 +73,20 @@ module.exports = class Predator extends LivingCreature {
     }
 
     eat() {
+      
         var emptyCells = this.chooseCell(2)
-        var newCell = random(emptyCells);
+        var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+
 
         if (newCell) {
+  
+                
             this.energy++
+            console.log(this.energy);
             var newX = newCell[0]
             var newY = newCell[1]
 
-            matrix[newY][newX] = matrix[this.y][this.x]
+            matrix[newY][newX] = 3
             matrix[this.y][this.x] = 0
             this.x = newX
             this.y = newY
@@ -92,6 +96,9 @@ module.exports = class Predator extends LivingCreature {
                     break
                 }
             }
+            // if(this.energy >= 10){
+            //     this.mul()
+            // }
         }
         else {
             this.move()

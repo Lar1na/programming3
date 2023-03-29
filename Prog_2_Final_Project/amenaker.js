@@ -87,7 +87,8 @@ module.exports = class Amenaker extends LivingCreature {
             this.energy += 3;
             let x = newCell[0];
             let y = newCell[1];
-
+            matrix[y][x] = 6
+            matrix[this.y][this.x] = 0
             for (let i = 0; i < grassArr.length; i++) {
                 if (grassArr[i].x == x && grassArr[i].y == y) {
                     grassArr.splice(i, 1)
@@ -103,9 +104,6 @@ module.exports = class Amenaker extends LivingCreature {
                     predatorArr.splice(i, 1)
                 }
             }
-            matrix[y][x] = 6
-            matrix[this.y][this.x] = 0
-
             this.x = x;
             this.y = y
 
