@@ -2,7 +2,7 @@ let LivingCreature = require("./LivingCreature")
 module.exports = class Predator extends LivingCreature {
     constructor(x, y) {
         super(x,y)
-        this.energy = 3;
+        this.energy = 8;
         this.directions = [];
     }
 
@@ -37,7 +37,7 @@ module.exports = class Predator extends LivingCreature {
 
     mul() {
         var emptyCells = this.chooseCell(0);
-        var newCell  =  emptyCells[Math.floor(Math.random * emptyCells.length)];
+        var newCell  =  emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
 
         if (newCell ) {
@@ -82,7 +82,7 @@ module.exports = class Predator extends LivingCreature {
   
                 
             this.energy++
-            console.log(this.energy);
+            // console.log(this.energy);
             var newX = newCell[0]
             var newY = newCell[1]
 

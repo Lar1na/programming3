@@ -55,7 +55,7 @@ module.exports = class Amenaker extends LivingCreature {
     }
     move() {
         var emptyCells = this.chooseCell(0)
-        var newCell  =  emptyCells[Math.floor(Math.random * emptyCells.length)];
+        var newCell  =  emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
 
         if (newCell) {
@@ -80,7 +80,7 @@ module.exports = class Amenaker extends LivingCreature {
     }
     eat() {
         let emptyCell = this.chooseCell(1, 2, 3);
-        var newCell  =  emptyCell[Math.floor(Math.random * emptyCell.length)];
+        var newCell  =  emptyCell[Math.floor(Math.random() * emptyCell.length)];
         
 
         if (newCell) {
@@ -117,7 +117,7 @@ module.exports = class Amenaker extends LivingCreature {
 
     mul(){
             var emptyCells = this.chooseCell(0);
-            var newCell  =  emptyCells[Math.floor(Math.random * emptyCells.length)];
+            var newCell  =  emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
     
             if (newCell && this.energy > 8) {
