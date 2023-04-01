@@ -2,6 +2,7 @@ const socket = io();
 var side = prompt("Ներմուծեք յուրաքանչյուր վանդակի երկարությունը(լռելյայն ՝ 20)");
 var color_of_canvas = prompt("Ներմուծեք դատարկ վանդակների գույնը(լռելյայն ՝ սպիտակ)")
 var matrix_size = +prompt("Ներմուծեք աղյուսակի վանդակների թիվը(լռելյայն ՝ 30)")
+weather = 'spring'
 
 if(side == ""){
     side = 20
@@ -13,8 +14,20 @@ if(color_of_canvas == ""){
     color_of_canvas = 'white'
 }
 
+let colors = ["green","yellow", "red", "blue", "black", "purple"]
 
+function weatherFunc(weather){
+    if(weather == 'winter'){
+        colors = ["#214508","#818716", '#871616', '#163287', 'black', '#871680']
 
+        // colors = ["green","yellow", "red", "blue", "black", "purple"]
+    }
+    else if (weather == 'spring'){
+        colors = ["green","yellow", "red", "blue", "black", "purple"]
+
+    }
+
+}
 
 function setup(){
     frameRate(10)
@@ -24,45 +37,70 @@ function setup(){
 function nkarel(matrix){
  for(var y = 0; y < matrix.length; y++){
       for(var x = 0; x < matrix[y].length;x++){
-          
+           
                if(matrix[y][x] == 1){
-                    rect(x  * side ,y * side , side , side)
-                    fill("green")
+                    fill(colors[0])
                }
                else if(matrix[y][x] == 2){
-                    rect(x  * side ,y * side , side , side)
-                    fill("yellow")
+                    fill(colors[1])
               }
               else if(matrix[y][x] == 3){
-                    fill("red")
+                    fill(colors[2])
               }
               else if(matrix[y][x] == 4){
-                    fill("blue")
-                    rect(x  * side ,y * side , side , side)
-            
+                    fill(colors[3])            
               }
               else if(matrix[y][x] == 5){
-                    fill("black")
-                    rect(x  * side ,y * side , side , side)
+                    fill(colors[4])
               }
               else if(matrix[y][x] == 6){
-                    fill("purple")
-                    rect(x  * side ,y * side , side , side)
+                    fill(colors[5])
               }
               else{
-                    fill(color_of_canvas)
-                    rect(x  * side ,y * side , side , side)
+                    fill('white')
                }
-        }
+            
+            // else if(weather == 'winter'){
+            //     if(matrix[y][x] == 1){
+            //          fill("#214508")
+            //     }
+            //     else if(matrix[y][x] == 2){
+            //          fill("#818716")
+            //    }
+            //    else if(matrix[y][x] == 3){
+            //          fill("#871616")
+            //    }
+            //    else if(matrix[y][x] == 4){
+            //          fill("#163287")            
+            //    }
+            //    else if(matrix[y][x] == 5){
+            //          fill("black")
+            //    }
+            //    else if(matrix[y][x] == 6){
+            //          fill("#871680")
+            //    }
+            //    else{
+            //          fill(color_of_canvas)
+            //     }
+            //  }
+               rect(x  * side ,y * side , side , side)
+        
+            }
  }
 } 
 socket.on('send matrix', nkarel)
-
+socket.on('send weather', weatherFunc)
 function AddBomb(){
     socket.emit("add bomb")
 }
 function AddAmenaker(){
     socket.emit("addAmenaker")
+}
+function Winter(){
+    socket.emit("winter")
+}
+function Spring(){
+    socket.emit("spring")
 }
 // setInterval(
 //     function(){

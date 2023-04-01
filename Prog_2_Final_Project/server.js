@@ -11,6 +11,7 @@ app.get('/', function (req, res) {
 server.listen(3000);
 
 matrix = [];
+let v = 200
 function matrixGenerator(matrixSize, grassCount, grEatCount, predatorCount, energy_giver_count) {
     for (let i = 0; i < matrixSize; i++) {
         matrix[i] = []
@@ -125,7 +126,6 @@ function game() {
 }
 
 
-setInterval(game, 200)
 
 function AddAmenaker() {
     
@@ -147,7 +147,7 @@ function AddAmenaker() {
 
 }
 function AddBomb() {
-    console.log('hello worldddd');
+    // console.log('hello worldddd');
     for (let i = 0; i < 1; i++) {
         let x = Math.floor(Math.random() * 20);
         let y = Math.floor(Math.random() * 20); 
@@ -158,7 +158,7 @@ function AddBomb() {
             if (matrix[y][x] == 5) {
                 let bomb = new Bomb(x, y);
                 bomb_arr.push(bomb);
-                console.log(matrix);
+                // console.log(matrix);
             }
 
         }
@@ -166,18 +166,42 @@ function AddBomb() {
     io.emit('send matrix', matrix)
 
 }
+function Winter(){
+    weather = 'winter'
+    clearInterval(interval)
+    setInterval(game,1000)
+   
 
-
-function AddBomb(){
-    socket.emit("add bomb")
+    io.emit('send weather', weather)
 }
-function AddAmenaker(){
-    socket.emit("addAmenaker")
-}
+function Spring(){
+    weather = 'spring'
+    clearInterval(interval)
+    setInterval(game,200)
+    io.emit('send weather', weather)
 
-io.on('connection', function() {
+}
+// function add (n){
+//     console.log(n);
+// }
+
+// io.on("add bomb", add);
+    // io.emit("add bomb", addBomb)÷
+
+// function AddAmenaker(){
+//     socket.emit("addAmenaker")
+// }
+
+io.on('connection', function(socket) {
     CreateObject();
-    io.on('add bomb', AddBomb);
-    io.on('addAmenaker', AddAmenaker);
+   
+    socket.on('add bomb', AddBomb);
+    socket.on('addAmenaker', AddAmenaker);
+    socket.on('winter', Winter);
+    socket.on('spring', Spring);
 
+    
 });
+
+let interval = setInterval(game, 500)
+
