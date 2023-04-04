@@ -1,6 +1,5 @@
 const socket = io();
 var side = prompt("Ներմուծեք յուրաքանչյուր վանդակի երկարությունը(լռելյայն ՝ 20)");
-var color_of_canvas = prompt("Ներմուծեք դատարկ վանդակների գույնը(լռելյայն ՝ սպիտակ)")
 var matrix_size = +prompt("Ներմուծեք աղյուսակի վանդակների թիվը(լռելյայն ՝ 30)")
 weather = 'spring'
 
@@ -10,21 +9,22 @@ if(side == ""){
 if(matrix_size == ""){
     matrix_size = 30
 }
-if(color_of_canvas == ""){
-    color_of_canvas = 'white'
-}
 
 let colors = ["green","yellow", "red", "blue", "black", "purple"]
 
 function weatherFunc(weather){
     if(weather == 'winter'){
-        colors = ["#214508","#818716", '#871616', '#163287', 'black', '#871680']
-
+        colors = ["#617143","#E7B10A", '#871616', '#163287', 'black', '#871680']
         // colors = ["green","yellow", "red", "blue", "black", "purple"]
     }
     else if (weather == 'spring'){
         colors = ["green","yellow", "red", "blue", "black", "purple"]
-
+    }
+    else if(weather == 'autumn'){
+        colors = ['#898121', '#E7B10A', "#DD4A48", '#8FBDD3', 'black', '#B97A95']
+    }
+    else{
+        colors = ['#379237', '#F0FF42', "#C21010", '#2192FF', 'black', '#B97A95']
     }
 
 }
@@ -59,30 +59,6 @@ function nkarel(matrix){
               else{
                     fill('white')
                }
-            
-            // else if(weather == 'winter'){
-            //     if(matrix[y][x] == 1){
-            //          fill("#214508")
-            //     }
-            //     else if(matrix[y][x] == 2){
-            //          fill("#818716")
-            //    }
-            //    else if(matrix[y][x] == 3){
-            //          fill("#871616")
-            //    }
-            //    else if(matrix[y][x] == 4){
-            //          fill("#163287")            
-            //    }
-            //    else if(matrix[y][x] == 5){
-            //          fill("black")
-            //    }
-            //    else if(matrix[y][x] == 6){
-            //          fill("#871680")
-            //    }
-            //    else{
-            //          fill(color_of_canvas)
-            //     }
-            //  }
                rect(x  * side ,y * side , side , side)
         
             }
@@ -101,6 +77,12 @@ function Winter(){
 }
 function Spring(){
     socket.emit("spring")
+}
+function Autumn(){
+    socket.emit("autumn")
+}
+function Summer(){
+    socket.emit("summer")
 }
 // setInterval(
 //     function(){

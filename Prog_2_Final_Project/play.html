@@ -68,6 +68,22 @@
         background-color: purple;
         color: aliceblue;
     }
+    .Winter{
+        background-color:grey;
+        color: aliceblue;
+    }
+    .Autumn{
+        background-color: orange;
+        color: aliceblue;
+    }
+    .Summer{
+        background-color: pink;
+        color: aliceblue;
+    }
+    .Spring{
+        background-color: green;
+        color: aliceblue;
+    }
     p {
         background-color: rgb(215, 255, 255);
         width: 200px;
@@ -99,12 +115,12 @@
     <hr>
     <main>
         <div class="buttons">
-            <div class="button" onclick="AddBomb()"><p class="bomb">Ռումբ</p></div>
-            <div class="button" onclick="AddAmenaker()"><p class="amenaker">Ամենակեր</p></div>
-            <button onclick="Winter()">Winter</button>
-            <button onclick="Summer()">Summer</button>
-            <button onclick="Autumn()">Autumn</button>
-            <button onclick="Spring()">Spring</button>
+            <div class="button" onclick="AddBomb()"><p class="bomb">Bomb</p></div>
+            <div class="button" onclick="AddAmenaker()"><p class="amenaker">Omnivore</p></div>
+            <div class="button" onclick="Winter()"><p class="Winter">Winter</p></div>
+            <div class="button" onclick="Autumn()"><p class="Autumn">Autumn</p></div>
+            <div class="button" onclick="Summer()"><p class="Summer">Summer</p></div>
+            <div class="button" onclick="Spring()"><p class="Spring">Spring</p></div>
         </div>
         <div class="links">
             <script src="/socket.io/socket.io.js"></script>

@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
+var fs = require("fs");
 var io = require('socket.io')(server);
 
 app.use(express.static("."));
@@ -61,7 +62,7 @@ function matrixGenerator(matrixSize, grassCount, grEatCount, predatorCount, ener
     io.emit('send matrix', matrix)
     return matrix;
 }
-matrix = matrixGenerator(30, 30, 60, 60, 10);
+matrix = matrixGenerator(30, 50, 60, 60, 30);
 
 io.sockets.emit('send matrix', matrix)
 
@@ -169,15 +170,26 @@ function AddBomb() {
 function Winter(){
     weather = 'winter'
     clearInterval(interval)
-    setInterval(game,1000)
-   
-
+    setInterval(game,500)
     io.emit('send weather', weather)
 }
 function Spring(){
     weather = 'spring'
     clearInterval(interval)
-    setInterval(game,200)
+    setInterval(game,350)
+    io.emit('send weather', weather)
+
+}
+function Autumn(){
+    weather = 'autumn'
+    clearInterval(interval)
+    setInterval(game,400)
+    io.emit('send weather', weather)
+}
+function Summer(){
+    weather = 'summer'
+    clearInterval(interval)
+    setInterval(game,300)
     io.emit('send weather', weather)
 
 }
@@ -199,9 +211,25 @@ io.on('connection', function(socket) {
     socket.on('addAmenaker', AddAmenaker);
     socket.on('winter', Winter);
     socket.on('spring', Spring);
-
+    socket.on('autumn', Autumn);
+    socket.on('spring', Summer);
     
 });
+st = {}
 
-let interval = setInterval(game, 500)
+setInterval(function() {
+    st.Grass = grassArr.length;
+    st.GrassEater = grassEaterArr.length;
+    st.Predator = predatorArr.length;
+    st.Bomb = bomb_arr.length;
+    st.Amenaker = amenaker_arr.length;
+    st.EnergyGiver = energy_giver.length;
+
+    fs.writeFile("st.json", JSON.stringify(st), function(){
+        console.log("heloo");
+    })
+},500)
+
+
+let interval = setInterval(game, 350)
 
